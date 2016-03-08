@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * A block module that displays recent blog and forum posts.
+ * A block module that displays the blogs posts from the last two days.
  */
 
 /*
@@ -65,7 +65,7 @@ function current_posts_block_info() {
 
 /**
  * Custom content function. 
- * Retrieve Posts from the day before Yesterday
+ * Retrieve Posts from the last two days
  * Set beginning and end dates, retrieve posts from database
  * saved in that time period.
  * 
@@ -77,8 +77,14 @@ function current_posts_contents(){
   //Get today's date.
   $today = getdate();
   //Calculate the date two days ago.
+  //mktime() is a PHP function http://php.net/manual/en/function.mktime.php
+  //Returns the Unix timestamp corresponding to the arguments given
+  
   $start_time = mktime(0, 0, 0,$today['mon'],($today['mday'] - 2), $today['year']);
   //Get all posts from one week ago to the present.
+  //int time(void) - PHP var that returns the current time measured in the number of seconds
+  //since the Unix Epoch (January 1 1970 00:00:00 GMT)
+  // http://php.net/manual/en/function.time.php
   $end_time = time();
 
   //Use Database API to retrieve current posts.
