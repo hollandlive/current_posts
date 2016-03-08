@@ -27,6 +27,8 @@ current_posts_help provides help and additional information about the module to 
 function current_posts_help($path, $arg) {
 	/*
 	The $path parameter provides context for the help: where in Drupal or the module the user is when they are accessing help. The recommended way to process this variable is with a switch statement. This code pattern is common in Drupal modules.
+	(in this case it is located at the following link (relative path) admin/help#current_posts
+	is used by Drupal core to link from the main help page (/admin/help or ?q=admin/help).
 	*/
 	switch($path) {
 		/*
@@ -81,7 +83,7 @@ function current_posts_contents(){
   //Returns the Unix timestamp corresponding to the arguments given
   
   $start_time = mktime(0, 0, 0,$today['mon'],($today['mday'] - 2), $today['year']);
-  //Get all posts from one week ago to the present.
+  //Get all posts from two days ago to the present.
   //int time(void) - PHP var that returns the current time measured in the number of seconds
   //since the Unix Epoch (January 1 1970 00:00:00 GMT)
   // http://php.net/manual/en/function.time.php
@@ -157,7 +159,12 @@ function current_posts_block_view($delta = '') {
 
 
 
-/*function current_posts_contents(){
+/* I have tried to implement a module (block moudule
+which would retrieve posts containing the "president" keyword,
+where presidents would be an array of 3 presidents
+but I needed more time to finish it....:)
+
+function current_posts_contents(){
 
 
   Get Presidents Array
