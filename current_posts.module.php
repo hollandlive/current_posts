@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * A block module that displays the blogs posts from the last two days.
